@@ -51,12 +51,6 @@ public struct Keychain {
         /// Maps to `kSecAttrAccessibleAfterFirstUnlockThisDeviceOnly`.
         case afterFirstUnlockThisDeviceOnly
         
-        /// Maps to `kSecAttrAccessibleAlways`.
-        case always
-        
-        /// Maps to `kSecAttrAccessibleAlwaysThisDeviceOnly`.
-        case alwaysThisDeviceOnly
-        
         /// Maps to `kSecAttrAccessibleWhenPasscodeSetThisDeviceOnly`.
         case whenPasscodeSetThisDeviceOnly
         
@@ -72,11 +66,6 @@ public struct Keychain {
             case .afterFirstUnlockThisDeviceOnly:
                 return kSecAttrAccessibleAfterFirstUnlockThisDeviceOnly
                 
-            case .always:
-                return kSecAttrAccessibleAlways
-            case .alwaysThisDeviceOnly:
-                return kSecAttrAccessibleAlwaysThisDeviceOnly
-                
             case .whenPasscodeSetThisDeviceOnly:
                 return kSecAttrAccessibleWhenPasscodeSetThisDeviceOnly
             }
@@ -86,12 +75,10 @@ public struct Keychain {
         public var synchronizationIsPossible: Bool {
             switch self {
                 case .afterFirstUnlock,
-                     .always,
                      .whenUnlocked:
                 return true
                 
                 case .afterFirstUnlockThisDeviceOnly,
-                     .alwaysThisDeviceOnly,
                      .whenPasscodeSetThisDeviceOnly,
                      .whenUnlockedThisDeviceOnly:
                 return false
